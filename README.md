@@ -7,8 +7,8 @@
 ---
 
 ## 中文版
-本项目基于<a href="https://github.com/vergoh/vnstat">vnstat</a>进行修改，主要是用来监控云服务器的流量以免超标而产生不必要的资费，感谢原作者的开源贡献！
-这我第一次fork，也是我第一次写project，算是新手，如果有任何问题大概是无法解答的，可以问问信任的AI们:)
+本项目基于<a href="https://github.com/vergoh/vnstat">vnstat</a>进行修改，主要是用来监控云服务器的流量以免超标而产生不必要的资费，感谢原作者的开源贡献！  
+这是我第一次fork，也是我第一次写project，算是新手，如果有任何问题大概是无法解答的，可以问问信任的AI们:)
 
 ### 部署
 1. **git源码至本地**
@@ -22,9 +22,9 @@ cd TrafficLimit
 sudo nano /usr/local/bin/1.sh
 ```
 3. **编写脚本内容**
-  推荐用`sudo nano`命令，比较符合编辑逻辑
-nano 编辑器中按 `Ctrl+O` 回车保存，`Ctrl+X` 退出
-首先编写`vnstat.config`，记得删除参数前边的分号`;`
+  推荐用`sudo nano`命令，比较符合编辑逻辑  
+  nano 编辑器中按 `Ctrl+O` 回车保存，`Ctrl+X` 退出  
+  首先编写`vnstat.config`，记得删除参数前边的分号`;`  
 ```
 sudo nano /cfg/vnstat.conf
 # 1. 设置默认监控网卡（改为你通过 ip link 查到的真实网卡名，如 eth0 或 ens33）
@@ -34,7 +34,7 @@ UnitMode 2
 # 3. 修改月流量结算起始日（假设流量每月 1 号重置，因人而异）
 MonthRotate 1
 ```
-保存并退出，重启服务使配置生效
+  保存并退出，重启服务使配置生效
 ```
 sudo systemctl restart vnstat
 ```
