@@ -103,13 +103,9 @@ crontab -e
 
 ---
 
-## 🇬🇧 English Version
+##  English Version
+To be continued...
 
-Welcome to my modified version! This project is forked from...
-
-### Features
-* Optimized performance
-* Added automation scripts
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
