@@ -1,6 +1,5 @@
-
+# 网络流量阻断器 | TrafficLimit
 <p align="center">
-  # 网络流量阻断器 | TrafficLimit
   <a href="#-english-version">English</a> •
   <a href="#-中文版本">中文</a>
 </p>
