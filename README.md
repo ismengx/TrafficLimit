@@ -1,37 +1,34 @@
+# 网络流量阻断器|TrafficLimit
 <p align="center">
-  <a href="#-english-version">🇬🇧 English</a> •
-  <a href="#-中文版本">🇨🇳 中文</a>
+  <a href="#-english-version">English</a> •
+  <a href="#-中文版本">中文</a>
 </p>
-
 ---
-
-## 🇨🇳 中文版
+## 中文版
 本项目基于<a href="https://github.com/vergoh/vnstat">vnstat</a>进行修改，主要是用来监控云服务器的流量以免超标而产生不必要的资费，感谢原作者的开源贡献！
-这我第一次fork，也是我第一次写project，算是新手，如果有任何任何问题大概是无法解答的，可以问问信任的AI们:)
+这我第一次fork，也是我第一次写project，算是新手，如果有任何问题大概是无法解答的，可以问问信任的AI们:)
 
 ### 部署
-1. git源码至本地
+1. **git源码至本地**
 ```bash
 git clone https://github.com/vergoh/vnstat
 cd vnstat
 ```
-2. 创建断网时执行的脚本
-  选择一个目录（如/usr/local/bin/）下创建脚本文件，如下内容中用1.sh作为脚本名
+2. **创建断网时执行的脚本**
+  选择一个目录（如/usr/local/bin/）下创建脚本文件，如下内容中用`1.sh`作为脚本名
 ```bash
 sudo nano /usr/local/bin/1.sh
 ```
-3. 编写脚本内容
-  推荐用sudo nano命令，比较符合编辑逻辑
-  Nano 编辑器中按 Ctrl+O 回车保存，Ctrl+X 退出
-首先编写vnstat.config，记得删除参数前边的分号‘;’
+3. **编写脚本内容**
+  推荐用`sudo nano`命令，比较符合编辑逻辑
+nano 编辑器中按 `Ctrl+O` 回车保存，`Ctrl+X` 退出
+首先编写`vnstat.config`，记得删除参数前边的分号`;`
 ```
 sudo nano /cfg/vnstat.conf
 # 1. 设置默认监控网卡（改为你通过 ip link 查到的真实网卡名，如 eth0 或 ens33）
 Interface "eth0"
-
 # 2.【可选】修改单位进制为 SI 十进制（kB/MB/GB，按 1000而非1024计算 留有余地）
 UnitMode 2
-
 # 3. 修改月流量结算起始日（假设流量每月 1 号重置，因人而异）
 MonthRotate 1
 ```
@@ -39,8 +36,8 @@ MonthRotate 1
 ```
 sudo systemctl restart vnstat
 ```
-A情况：禁用对应网卡实现断网（适用于服务器在你手边的情况）
-  其中eth0是你通过ip link命令或ifconfig命令获取的目标网卡名、
+**A情况：禁用对应网卡实现断网（适用于服务器在你手边时）**
+  其中eth0是你通过`ip link`命令或`ifconfig`命令获取的目标网卡名、
 ```
 #!/bin/bash
 INTERFACE="eth0"
@@ -54,7 +51,7 @@ if [ $? -eq 1 ]; then
     sudo /sbin/ip link set dev $INTERFACE down
 fi
 ```
-B情况：通过iptables封锁所有流量，并保留22号SSH端口（适用于云服务器纯白嫖情况）
+**B情况：通过`iptables`封锁所有流量，并保留22号SSH端口（适用于云服务器纯白嫖需求）**
 ```
 #!/bin/bash
 INTERFACE="eth0" # "eth0"为你的云服务器网卡名，因人而异
@@ -79,11 +76,11 @@ if [ $? -eq 1 ]; then
     sudo /sbin/iptables -P FORWARD DROP
 fi
 ```
-4. 赋予脚本可执行权限
-```shell
+4. **赋予脚本可执行权限**
+```
 sudo chmod +x /usr/local/bin/1.sh
 ```
-5. 配置 vnstat 用户免密 sudo 权限
+5. **配置 vnstat 用户免密 sudo 权限**
 ```
 sudo visudo
 ```
@@ -91,7 +88,7 @@ sudo visudo
 ```
 vnstat ALL=(ALL) NOPASSWD: /etc/1.sh
 ```
-6.设置自动执行
+6. **设置自动执行））
 打开当前用户的自动任务编辑器
 ```
 crontab -e
@@ -100,8 +97,6 @@ crontab -e
 ```
 */5 * * * * /etc/1.sh
 ```
-
-
 <p align="right">(<a href="#top">回到顶部</a>)</p>
 
 ---
