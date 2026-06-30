@@ -1,9 +1,12 @@
-# 网络流量阻断器|TrafficLimit
+
 <p align="center">
+  # 网络流量阻断器 | TrafficLimit
   <a href="#-english-version">English</a> •
   <a href="#-中文版本">中文</a>
 </p>
+
 ---
+
 ## 中文版
 本项目基于<a href="https://github.com/vergoh/vnstat">vnstat</a>进行修改，主要是用来监控云服务器的流量以免超标而产生不必要的资费，感谢原作者的开源贡献！
 这我第一次fork，也是我第一次写project，算是新手，如果有任何问题大概是无法解答的，可以问问信任的AI们:)
