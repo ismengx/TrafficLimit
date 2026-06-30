@@ -16,12 +16,12 @@
 git clone https://github.com/ismengx/TrafficLimit
 cd TrafficLimit
 ```
-2. **创建断网时执行的脚本**
+2. **创建断网时执行的脚本**  
   选择一个目录（如/usr/local/bin/）下创建脚本文件，如下内容中用`1.sh`作为脚本名
 ```bash
 sudo nano /usr/local/bin/1.sh
 ```
-3. **编写脚本内容**
+3. **编写脚本内容**  
   推荐用`sudo nano`命令，比较符合编辑逻辑  
   nano 编辑器中按 `Ctrl+O` 回车保存，`Ctrl+X` 退出  
   首先编写`vnstat.config`，记得删除参数前边的分号`;`  
@@ -38,7 +38,7 @@ MonthRotate 1
 ```
 sudo systemctl restart vnstat
 ```
-**A情况：禁用对应网卡实现断网（适用于服务器在你手边时）**
+**A情况：禁用对应网卡实现断网（适用于服务器在你手边时）**  
   其中eth0是你通过`ip link`命令或`ifconfig`命令获取的目标网卡名、
 ```
 #!/bin/bash
@@ -90,7 +90,7 @@ sudo visudo
 ```
 vnstat ALL=(ALL) NOPASSWD: /etc/1.sh
 ```
-6. **设置自动执行**
+6. **设置自动执行**  
 打开当前用户的自动任务编辑器
 ```
 crontab -e
