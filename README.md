@@ -13,8 +13,8 @@
 ### 部署
 1. **git源码至本地**
 ```bash
-git clone https://github.com/vergoh/vnstat
-cd vnstat
+git clone https://github.com/ismengx/TrafficLimit
+cd TrafficLimit
 ```
 2. **创建断网时执行的脚本**
   选择一个目录（如/usr/local/bin/）下创建脚本文件，如下内容中用`1.sh`作为脚本名
@@ -90,7 +90,7 @@ sudo visudo
 ```
 vnstat ALL=(ALL) NOPASSWD: /etc/1.sh
 ```
-6. **设置自动执行））
+6. **设置自动执行**
 打开当前用户的自动任务编辑器
 ```
 crontab -e
